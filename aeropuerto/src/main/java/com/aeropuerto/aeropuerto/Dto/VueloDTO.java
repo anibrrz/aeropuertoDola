@@ -4,22 +4,24 @@ import java.time.LocalTime;
 import java.util.UUID;
 
 public class VueloDTO {
-    private UUID id;
+    private UUID numeroDeVuelo;
     private UUID avionId;
     private UUID aeropuertoSalidaId;
     private UUID aeropuertoLlegadaId;
     private LocalTime horaSalida;
     private LocalTime horaLlegada;
 
-    public UUID getId() {
-        return id;
-    }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
 
-    public UUID getAvionId() {
+    public UUID getNumeroDeVuelo() {
+		return numeroDeVuelo;
+	}
+
+	public void setNumeroDeVuelo(UUID numeroDeVuelo) {
+		this.numeroDeVuelo = numeroDeVuelo;
+	}
+
+	public UUID getAvionId() {
         return avionId;
     }
 

@@ -4,29 +4,23 @@ import java.time.LocalTime;
 import java.util.UUID;
 
 public class EscalaDTO {
-    private UUID id;
     private UUID vueloId;
-    private int numeroEscala;
+    private UUID numeroEscala;
     private UUID aeropuertoId;
     private LocalTime horaLlegada;
     private LocalTime horaPartida;
-	public UUID getId() {
-		return id;
-	}
-	public void setId(UUID id) {
-		this.id = id;
-	}
+
 	public UUID getVueloId() {
 		return vueloId;
 	}
 	public void setVueloId(UUID vueloId) {
 		this.vueloId = vueloId;
 	}
-	public int getNumeroEscala() {
+	public UUID getNumeroEscala() {
 		return numeroEscala;
 	}
-	public void setNumeroEscala(int numeroEscala) {
-		this.numeroEscala = numeroEscala;
+	public void setNumeroEscala(UUID numeroDeEscala) {
+		this.numeroEscala = numeroDeEscala;
 	}
 	public UUID getAeropuertoId() {
 		return aeropuertoId;

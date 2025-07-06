@@ -3,25 +3,18 @@ package com.aeropuerto.aeropuerto.Dto;
 import java.util.UUID;
 
 public class AvionDTO {
-    private UUID id;
-    private Integer numeroSerieAvion;
+    private UUID numeroSerieAvion;
     private String nombreTipoDeAvion;
     private Integer totalDeAsientos;
     
-	public UUID getId() {
-		return id;
-	}
+
 	
-	public void setId(UUID id) {
-		this.id = id;
-	}
-	
-	public Integer getNumeroSerieAvion() {
+	public UUID getNumeroSerieAvion() {
 		return numeroSerieAvion;
 	}
 	
-	public void setNumeroSerieAvion(Integer numeroSerieAvion) {
-		this.numeroSerieAvion = numeroSerieAvion;
+	public void setNumeroSerieAvion(UUID numeroSerieAvion2) {
+		this.numeroSerieAvion = numeroSerieAvion2;
 	}
 	
 	public String getNombreTipoDeAvion() {

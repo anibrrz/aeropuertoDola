@@ -1,5 +1,6 @@
 package com.aeropuerto.aeropuerto.entity;
 
+
 import java.util.UUID;
 
 import com.aeropuerto.aeropuerto.Dto.PuedeAterrizarDTO;
@@ -15,10 +16,10 @@ import jakarta.persistence.Table;
 @Table(name = "puedeaterrizar")
 public class PuedeAterrizar {
 
-    @Id
-    private UUID id;
+	@Id
+	private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "nombreTipoDeAvion")
     private TipoDeAvion tipoDeAvion;
 
@@ -27,17 +28,20 @@ public class PuedeAterrizar {
     private Aeropuerto aeropuerto;
 
     public PuedeAterrizar() {
-        this.id = UUID.randomUUID();
+   
     }
 
     public PuedeAterrizarDTO toDto() {
         PuedeAterrizarDTO dto = new PuedeAterrizarDTO();
-        dto.setId(id);
         dto.setTipoDeAvionId(tipoDeAvion != null ? tipoDeAvion.getId() : null);
         dto.setAeropuertoId(aeropuerto != null ? aeropuerto.getId() : null);
         return dto;
     }
 
+
+	public TipoDeAvion getTipoDeAvion() {
+		return tipoDeAvion;
+	}
 	public UUID getId() {
 		return id;
 	}
@@ -45,11 +49,6 @@ public class PuedeAterrizar {
 	public void setId(UUID id) {
 		this.id = id;
 	}
-
-	public TipoDeAvion getTipoDeAvion() {
-		return tipoDeAvion;
-	}
-
 	public void setTipoDeAvion(TipoDeAvion tipoDeAvion) {
 		this.tipoDeAvion = tipoDeAvion;
 	}

@@ -32,7 +32,7 @@ public class VueloService {
 
     public VueloDTO saveVuelo(VueloDTO dto) {
         Vuelo vuelo = new Vuelo();
-        vuelo.setId(dto.getId() != null ? dto.getId() : UUID.randomUUID());
+        vuelo.setNumeroDeVuelo(dto.getNumeroDeVuelo() != null ? dto.getNumeroDeVuelo() : UUID.randomUUID());
 
         Avion avion = avionRepository.findById(dto.getAvionId()).orElse(null);
         Aeropuerto salida = aeropuertoRepository.findById(dto.getAeropuertoSalidaId()).orElse(null);

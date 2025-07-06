@@ -21,9 +21,9 @@ public class AvionService {
 
     public AvionDTO upsert(AvionDTO dto) {
         Avion avion = new Avion();
-        avion.setId(dto.getId() != null ? dto.getId() : UUID.randomUUID());
+        avion.setNumeroSerieAvion(dto.getNumeroSerieAvion() != null ? dto.getNumeroSerieAvion() : UUID.randomUUID());
         avion.setNumeroSerieAvion(dto.getNumeroSerieAvion());
-        avion.setNombreTipoDeAvion(dto.getNombreTipoDeAvion());
+        avion.setTipodeavion(dto.getNombreTipoDeAvion());
         avion.setTotalDeAsientos(dto.getTotalDeAsientos());
         return repo.save(avion).toDto();
     }

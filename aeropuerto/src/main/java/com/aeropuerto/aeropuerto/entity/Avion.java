@@ -9,48 +9,50 @@ import java.util.UUID;
 @Entity
 @Table(name = "avion")
 public class Avion {
-    @Id
+   /* @Id
     @GeneratedValue
     private UUID id;
-
-    @Column(nullable = false, unique = true)
-    private Integer numeroSerieAvion;
-
-    private String nombreTipoDeAvion;
+*/
+    @Id
+    @GeneratedValue
+    private UUID numeroSerieAvion;
+    
+    //EL ERROR ESTA ACA
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private TipoDeAvion tipodeavion;
+    @Column(name = "totalDeAsientos")
     private Integer totalDeAsientos;
 
     public AvionDTO toDto() {
         AvionDTO dto = new AvionDTO();
-        dto.setId(this.id);
         dto.setNumeroSerieAvion(this.numeroSerieAvion);
-        dto.setNombreTipoDeAvion(this.nombreTipoDeAvion);
+        dto.setNombreTipoDeAvion(this.tipodeavion.getNombreTipoDeAvion());
         dto.setTotalDeAsientos(this.totalDeAsientos);
         return dto;
     }
 
-	public UUID getId() {
-		return id;
+	
+	public TipoDeAvion getTipodeavion() {
+		return tipodeavion;
 	}
 
-	public void setId(UUID id) {
-		this.id = id;
+
+	public void setTipodeavion(TipoDeAvion tipodeavion) {
+		this.tipodeavion = tipodeavion;
 	}
 
-	public Integer getNumeroSerieAvion() {
+
+	public UUID getNumeroSerieAvion() {
 		return numeroSerieAvion;
 	}
 
-	public void setNumeroSerieAvion(Integer numeroSerieAvion) {
+
+	public void setNumeroSerieAvion(UUID numeroSerieAvion) {
 		this.numeroSerieAvion = numeroSerieAvion;
 	}
 
-	public String getNombreTipoDeAvion() {
-		return nombreTipoDeAvion;
-	}
 
-	public void setNombreTipoDeAvion(String nombreTipoDeAvion) {
-		this.nombreTipoDeAvion = nombreTipoDeAvion;
-	}
 
 	public Integer getTotalDeAsientos() {
 		return totalDeAsientos;

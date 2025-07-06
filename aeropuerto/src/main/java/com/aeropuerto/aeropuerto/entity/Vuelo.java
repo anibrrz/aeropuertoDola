@@ -17,7 +17,7 @@ import jakarta.persistence.Table;
 public class Vuelo {
 
     @Id
-    private UUID id;
+    private UUID numeroDeVuelo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "numeroDeSerieAvion")
@@ -35,13 +35,13 @@ public class Vuelo {
     private LocalTime horaLlegada;
 
     public Vuelo() {
-        this.id = UUID.randomUUID();
+        this.numeroDeVuelo = UUID.randomUUID();
     }
 
     public VueloDTO toDto() {
         VueloDTO dto = new VueloDTO();
-        dto.setId(id);
-        dto.setAvionId(avion != null ? avion.getId() : null);
+        dto.setNumeroDeVuelo(numeroDeVuelo);;
+        dto.setAvionId(avion != null ? avion.getNumeroSerieAvion() : null);
         dto.setAeropuertoSalidaId(aeropuertoSalida != null ? aeropuertoSalida.getId() : null);
         dto.setAeropuertoLlegadaId(aeropuertoLlegada != null ? aeropuertoLlegada.getId() : null);
         dto.setHoraSalida(horaSalida);
@@ -49,12 +49,13 @@ public class Vuelo {
         return dto;
     }
 
-	public UUID getId() {
-		return id;
+
+	public UUID getNumeroDeVuelo() {
+		return numeroDeVuelo;
 	}
 
-	public void setId(UUID id) {
-		this.id = id;
+	public void setNumeroDeVuelo(UUID numeroDeVuelo) {
+		this.numeroDeVuelo = numeroDeVuelo;
 	}
 
 	public Avion getAvion() {
