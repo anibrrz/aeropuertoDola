@@ -9,19 +9,17 @@ import java.util.UUID;
 @Entity
 @Table(name = "avion")
 public class Avion {
-   /* @Id
-    @GeneratedValue
-    private UUID id;
-*/
+
     @Id
     @GeneratedValue
+    @Column(name = "numerodeserieavion") 
     private UUID numeroSerieAvion;
     
     //EL ERROR ESTA ACA
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "tipodeavion")
     private TipoDeAvion tipodeavion;
-    @Column(name = "totalDeAsientos")
+    @Column(name = "totaldeasientos")
     private Integer totalDeAsientos;
 
     public AvionDTO toDto() {

@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import com.aeropuerto.aeropuerto.Dto.VueloDTO;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -17,21 +18,23 @@ import jakarta.persistence.Table;
 public class Vuelo {
 
     @Id
+    @Column(name = "numerodevuelo")
     private UUID numeroDeVuelo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "numeroDeSerieAvion")
+    @JoinColumn(name = "numeroserieavion")
     private Avion avion;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "nombreAeropuertoSalida")
+    @JoinColumn(name = "aeropuertosalida")
     private Aeropuerto aeropuertoSalida;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "nombreAeropuertoLlegada")
+    @JoinColumn(name = "aeropuertollegada")
     private Aeropuerto aeropuertoLlegada;
-
+    @Column(name = "horasalida")
     private LocalTime horaSalida;
+    @Column(name = "horallegada")
     private LocalTime horaLlegada;
 
     public Vuelo() {

@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import com.aeropuerto.aeropuerto.Dto.EscalaDTO;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -18,17 +19,19 @@ public class Escala {
 
    
 	@Id
+	@Column(name = "numerodeescala")
     private UUID numeroDeEscala;
-
+	
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "numeroDeVuelo")
+    @JoinColumn(name = "numerodevuelo")
     private Vuelo vuelo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "nombreAeropuerto")
+    @JoinColumn(name = "idaeropuerto")
     private Aeropuerto aeropuerto;
-
+    @Column(name = "horallegada")
     private LocalTime horaLlegada;
+    @Column(name = "horapartida")
     private LocalTime horaPartida;
 
     public Escala() {

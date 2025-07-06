@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.aeropuerto.aeropuerto.entity.PuedeAterrizar;
+import com.aeropuerto.aeropuerto.entity.PuedeAterrizarId;
 
 @Repository
-public interface PuedeAterrizarRepository extends JpaRepository<PuedeAterrizar, UUID> {}
+public interface PuedeAterrizarRepository extends JpaRepository<PuedeAterrizar, PuedeAterrizarId> {}
