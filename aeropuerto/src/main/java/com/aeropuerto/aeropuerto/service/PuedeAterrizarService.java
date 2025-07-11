@@ -20,6 +20,10 @@ public class PuedeAterrizarService {
 
     @Autowired
     private PuedeAterrizarRepository puedeAterrizarRepository;
+    
+    private AeropuertoRepository aeropuertoRepo;
+    
+    private TipoDeAvionRepository tipoAvionRepo;
 
     @Autowired
     private TipoDeAvionRepository tipoDeAvionRepository;
@@ -29,6 +33,9 @@ public class PuedeAterrizarService {
 
     public Optional<PuedeAterrizarDTO> getById(UUID tipoId, UUID aeropuertoId) {
         PuedeAterrizarId id = new PuedeAterrizarId(tipoId, aeropuertoId);
+        String nombreAeropuerto = this.aeropuertoRepo.findById(aeropuertoId).get().getNombreAeropuerto();
+        String nombreTipoAvion = this.tipoAvionRepo.findById(tipoId).get().getNombreTipoDeAvion();
+        
         return puedeAterrizarRepository.findById(id).map(PuedeAterrizar::toDto);
     }
 
