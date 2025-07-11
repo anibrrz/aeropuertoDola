@@ -1,64 +1,59 @@
 package com.aeropuerto.aeropuerto.entity;
 
-import java.util.UUID;
+import java.io.Serializable;
 
 import com.aeropuerto.aeropuerto.Dto.PuedeAterrizarDTO;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "puedeaterrizar")
-public class PuedeAterrizar {
+public class PuedeAterrizar implements Serializable {
 
-    @Id
-    private UUID id;
+    @EmbeddedId
+    private PuedeAterrizarId id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "nombreTipoDeAvion")
+    @MapsId("tipoDeAvion") 
+    @JoinColumn(name = "nombretipodeavion")
     private TipoDeAvion tipoDeAvion;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "nombreAeropuerto")
+    @MapsId("aeropuerto") 
+    @JoinColumn(name = "nombreaeropuerto")
     private Aeropuerto aeropuerto;
 
     public PuedeAterrizar() {
-        this.id = UUID.randomUUID();
     }
 
     public PuedeAterrizarDTO toDto() {
         PuedeAterrizarDTO dto = new PuedeAterrizarDTO();
-        dto.setId(id);
         dto.setTipoDeAvionId(tipoDeAvion != null ? tipoDeAvion.getId() : null);
         dto.setAeropuertoId(aeropuerto != null ? aeropuerto.getId() : null);
         return dto;
     }
 
-	public UUID getId() {
-		return id;
-	}
+    public PuedeAterrizarId getId() {
+        return id;
+    }
 
-	public void setId(UUID id) {
-		this.id = id;
-	}
+    public void setId(PuedeAterrizarId id) {
+        this.id = id;
+    }
 
-	public TipoDeAvion getTipoDeAvion() {
-		return tipoDeAvion;
-	}
+    public TipoDeAvion getTipoDeAvion() {
+        return tipoDeAvion;
+    }
 
-	public void setTipoDeAvion(TipoDeAvion tipoDeAvion) {
-		this.tipoDeAvion = tipoDeAvion;
-	}
+    public void setTipoDeAvion(TipoDeAvion tipoDeAvion) {
+        this.tipoDeAvion = tipoDeAvion;
+    }
 
-	public Aeropuerto getAeropuerto() {
-		return aeropuerto;
-	}
+    public Aeropuerto getAeropuerto() {
+        return aeropuerto;
+    }
 
-	public void setAeropuerto(Aeropuerto aeropuerto) {
-		this.aeropuerto = aeropuerto;
-	}
+    public void setAeropuerto(Aeropuerto aeropuerto) {
+        this.aeropuerto = aeropuerto;
+    }
 }

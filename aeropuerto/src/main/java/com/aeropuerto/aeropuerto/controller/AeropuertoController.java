@@ -16,11 +16,10 @@ public class AeropuertoController {
     private AeropuertoService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<AeropuertoDTO> getAeropuertoById(@PathVariable UUID id) {
-        return service.getAeropuertoById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+    public AeropuertoDTO getAeropuertoById(@PathVariable UUID id) {
+    	System.out.println("entrando al service");
+        return service.getAeropuertoById(id);
+      }
 
     @PostMapping
     public ResponseEntity<AeropuertoDTO> upsertAeropuerto(@RequestBody AeropuertoDTO dto) {

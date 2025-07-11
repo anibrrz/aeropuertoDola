@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import com.aeropuerto.aeropuerto.Dto.TipoDeAvionDTO;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -16,9 +17,11 @@ public class TipoDeAvion {
 	@Id
 	@GeneratedValue
 	private UUID id;
-	
+	@Column(name = "nombretipodeavion")
 	private String nombreTipoDeAvion;
+	@Column(name = "cantidadmaximaasientos")
 	private Integer cantidadMaximaAsientos;
+	@Column(name = "empresa")
 	private String empresa;
 	
 	public TipoDeAvion() {

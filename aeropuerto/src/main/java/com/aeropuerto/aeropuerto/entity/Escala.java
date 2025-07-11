@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import com.aeropuerto.aeropuerto.Dto.EscalaDTO;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -16,51 +17,44 @@ import jakarta.persistence.Table;
 @Table(name = "escalas")
 public class Escala {
 
-    @Id
-    private UUID id;
-
-    private int numeroEscala;
-
+   
+	@Id
+	@Column(name = "numerodeescala")
+    private UUID numeroDeEscala;
+	
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "numeroDeVuelo")
+    @JoinColumn(name = "numerodevuelo")
     private Vuelo vuelo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "nombreAeropuerto")
+    @JoinColumn(name = "idaeropuerto")
     private Aeropuerto aeropuerto;
-
+    @Column(name = "horallegada")
     private LocalTime horaLlegada;
+    @Column(name = "horapartida")
     private LocalTime horaPartida;
 
     public Escala() {
-        this.id = UUID.randomUUID();
+        this.numeroDeEscala = UUID.randomUUID();
     }
 
     public EscalaDTO toDto() {
         EscalaDTO dto = new EscalaDTO();
-        dto.setId(id);
-        dto.setVueloId(vuelo != null ? vuelo.getId() : null);
-        dto.setNumeroEscala(numeroEscala);
+        dto.setVueloId(vuelo != null ? vuelo.getNumeroDeVuelo() : null);
+        dto.setNumeroEscala(numeroDeEscala);;
         dto.setAeropuertoId(aeropuerto != null ? aeropuerto.getId() : null);
         dto.setHoraLlegada(horaLlegada);
         dto.setHoraPartida(horaPartida);
         return dto;
     }
 
-	public UUID getId() {
-		return id;
+
+	public UUID getNumeroDeEscala() {
+		return numeroDeEscala;
 	}
 
-	public void setId(UUID id) {
-		this.id = id;
-	}
-
-	public int getNumeroEscala() {
-		return numeroEscala;
-	}
-
-	public void setNumeroEscala(int numeroEscala) {
-		this.numeroEscala = numeroEscala;
+	public void setNumeroDeEscala(UUID numeroDeEscala) {
+		this.numeroDeEscala = numeroDeEscala;
 	}
 
 	public Vuelo getVuelo() {

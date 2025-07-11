@@ -21,9 +21,11 @@ public class PuedeAterrizarController {
     @Autowired
     private PuedeAterrizarService service;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<PuedeAterrizarDTO> getById(@PathVariable UUID id) {
-        return service.getById(id)
+    @GetMapping("/{tipoId}/{aeropuertoId}")
+    public ResponseEntity<PuedeAterrizarDTO> getById(
+            @PathVariable UUID tipoId,
+            @PathVariable UUID aeropuertoId) {
+        return service.getById(tipoId, aeropuertoId)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -33,3 +35,4 @@ public class PuedeAterrizarController {
         return ResponseEntity.ok(service.upsert(dto));
     }
 }
+

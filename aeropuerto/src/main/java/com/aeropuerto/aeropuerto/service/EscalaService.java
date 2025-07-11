@@ -32,8 +32,8 @@ public class EscalaService {
 
     public EscalaDTO upsert(EscalaDTO dto) {
         Escala escala = new Escala();
-        escala.setId(dto.getId() != null ? dto.getId() : UUID.randomUUID());
-        escala.setNumeroEscala(dto.getNumeroEscala());
+        escala.setNumeroDeEscala(dto.getNumeroEscala() != null ? dto.getNumeroEscala() : UUID.randomUUID());
+        escala.setNumeroDeEscala(dto.getNumeroEscala());
         escala.setHoraLlegada(dto.getHoraLlegada());
         escala.setHoraPartida(dto.getHoraPartida());
 

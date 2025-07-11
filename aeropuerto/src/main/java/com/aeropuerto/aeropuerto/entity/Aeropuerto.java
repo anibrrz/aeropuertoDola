@@ -12,7 +12,7 @@ public class Aeropuerto {
     @GeneratedValue
     private UUID id;
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "nombreaeropuerto")
     private String nombreAeropuerto;
 
     private String ciudad;

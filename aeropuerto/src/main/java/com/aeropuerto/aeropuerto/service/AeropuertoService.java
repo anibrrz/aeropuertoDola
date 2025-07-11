@@ -16,9 +16,10 @@ public class AeropuertoService {
     @Autowired
     private AeropuertoRepository repo;
 
-    @Cacheable(value = "aeropuertoStore", key = "#id")
-    public Optional<AeropuertoDTO> getAeropuertoById(UUID id) {
-        return repo.findById(id).map(Aeropuerto::toDto);
+    @Cacheable(cacheNames = {"aeropuertoStore"}, key = "#id")
+    public AeropuertoDTO getAeropuertoById(UUID id) {
+    	System.out.println("accediendo al servicio 1");
+        return repo.findById(id).get().toDto();
     }
 
     public AeropuertoDTO upsertAeropuerto(AeropuertoDTO dto) {

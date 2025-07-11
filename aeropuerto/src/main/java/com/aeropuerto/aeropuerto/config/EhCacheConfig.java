@@ -28,7 +28,7 @@ public class EhCacheConfig {
                 Aeropuerto.class,
                 ResourcePoolsBuilder.newResourcePoolsBuilder()
                     .offheap(10, MemoryUnit.MB))
-            .withExpiry(ExpiryPolicyBuilder.timeToIdleExpiration(Duration.ofSeconds(60)))
+            .withExpiry(ExpiryPolicyBuilder.timeToIdleExpiration(Duration.ofSeconds(5)))
             .build();
 
         CachingProvider provider = Caching.getCachingProvider();
@@ -37,7 +37,7 @@ public class EhCacheConfig {
         javax.cache.configuration.Configuration<UUID, Aeropuerto> configuration = 
             Eh107Configuration.fromEhcacheCacheConfiguration(cacheConfiguration);
 
-        cacheManager.createCache("equiposStore", configuration);
+        cacheManager.createCache("aeropuertoStore", configuration);
         return cacheManager;
     }
 }

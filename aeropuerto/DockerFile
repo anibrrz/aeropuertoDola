@@ -21,4 +21,6 @@ COPY --from=maven /usr/src/app/target/${JAR_FILE} /opt/app/
 
 EXPOSE 8080
 
-ENTRYPOINT ["java","-jar","aeropuerto-api.jar"]
+#ENTRYPOINT ["java","-jar","aeropuerto-api.jar"]
+ENV JAVA_OPTS = ""
+CMD exec java $JAVA_OPTS -jar aeropuerto-api.jar

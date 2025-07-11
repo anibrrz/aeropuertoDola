@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  db:
+    image: ${image}
+    container_name: aeropuertoDB
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - TZ=${TZ}
+    ports:
+      - "${postgres_port}:${postgres_port}"
+    volumes:
+      - .data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  default:
+    name: aeropuerto-net
